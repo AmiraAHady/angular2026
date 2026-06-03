@@ -5,14 +5,19 @@ import { About } from '../components/about/about';
 import { Navbar } from '../components/navbar/navbar';
 import { ProductList } from '../components/product-list/product-list';
 import { Footer } from '../components/footer/footer';
+import { MovieList } from '../components/movie-list/movie-list';
+
 // metadata
 @Component({
   // component directive /selector
   selector: 'app-root',
   // standalone
   // External dependancey
-  imports: [ Navbar, Footer, ProductList],
+  imports: [Navbar, Footer, MovieList],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
-export class App {}
+export class App {
+
+ 
+}
