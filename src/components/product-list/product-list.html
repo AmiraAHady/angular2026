@@ -2,8 +2,11 @@
   <h2>Product List</h2>
 
   <div class="row">
-    <app-product-card></app-product-card>
-    <app-product-card></app-product-card>
+    <h1>{{ searchValue }}</h1>
+    <div class="col-8">
+      <input type="text" class="form-control mb-5" [(ngModel)]="searchValue" />
+      <!-- <input type="text" class="form-control mb-5" [value]="searchValue" /> -->
+    </div>
     <app-product-card></app-product-card>
   </div>
 </div>

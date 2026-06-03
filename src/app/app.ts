@@ -8,14 +8,11 @@ import { Footer } from '../components/footer/footer';
 // metadata
 @Component({
   // component directive /selector
-  selector: 'app-root', 
+  selector: 'app-root',
   // standalone
   // External dependancey
-  imports: [Home,Navbar,Footer],
+  imports: [ Navbar, Footer, ProductList],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrl: './app.css',
 })
-
-export class App {
-  protected readonly title = 'Amira';
-}
+export class App {}
