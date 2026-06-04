@@ -1,0 +1,68 @@
+import { IProduct } from "../common/interfaces/IProduct";
+
+export const products:IProduct[] = [
+  {
+    id: 1,
+    name: 'Laptop',
+    quantity: 10,
+    price: 25000,
+    img: 'https://picsum.photos/id/1/300/200',
+    categoryId: 1,
+  },
+  {
+    id: 2,
+    name: 'Smartphone',
+    quantity: 15,
+    price: 12000,
+    img: 'https://picsum.photos/id/2/300/200',
+    categoryId: 1,
+  },
+  {
+    id: 3,
+    name: 'Headphones',
+    quantity: 20,
+    price: 1500,
+    img: 'https://picsum.photos/id/3/300/200',
+    categoryId: 2,
+  },
+  {
+    id: 4,
+    name: 'Keyboard',
+    quantity: 12,
+    price: 800,
+    img: 'https://picsum.photos/id/4/300/200',
+    categoryId: 2,
+  },
+  {
+    id: 5,
+    name: 'Gaming Mouse',
+    quantity: 18,
+    price: 600,
+    img: 'https://picsum.photos/id/5/300/200',
+    categoryId: 2,
+  },
+  {
+    id: 6,
+    name: 'Monitor',
+    quantity: 8,
+    price: 5000,
+    img: 'https://picsum.photos/id/6/300/200',
+    categoryId: 1,
+  },
+  {
+    id: 7,
+    name: 'Smart Watch',
+    quantity: 25,
+    price: 3500,
+    img: 'https://picsum.photos/id/7/300/200',
+    categoryId: 3,
+  },
+  {
+    id: 8,
+    name: 'Bluetooth Speaker',
+    quantity: 14,
+    price: 2200,
+    img: 'https://picsum.photos/id/8/300/200',
+    categoryId: 3,
+  },
+];

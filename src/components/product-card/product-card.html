@@ -1,12 +1,12 @@
-<div class="col-md-4 mb-3">
+<div class="col">
   <div class="card">
-    <img [src]="productImg" class="card-img-top" [alt]="productTitle" />
+    <img [src]="product.img" class="card-img-top" [alt]="product.name" />
     <div class="card-body">
-      <h5 class="card-title" (click)="handleclick()">{{ productTitle }}</h5>
-      <p class="card-text">${{ productPrice }}</p>
-      <button class="btn btn-primary" [disabled]="outOfStock" (click)="addToCart(productTitle,productPrice)">Add to Cart</button>
-      <!-- <button class="btn btn-primary" disabled="{{ outOfStock }}">Add to Cart</button> -->
+      <h5 class="card-title">{{ product.name }}</h5>
+      <p class="card-text">
+        {{ product.price }}
+      </p>
+      <button class="btn btn-primary" (click)="addProduct()">Add To Cart</button>
     </div>
   </div>
 </div>
-
