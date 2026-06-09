@@ -6,29 +6,13 @@
           <img [src]="baseImageURL + movie.poster_path" class="card-img-top" [alt]="movie.title" />
           <div class="card-body">
             <h5 class="card-title">
-              {{ movie.title | uppercase }}
-            </h5>
-            <!-- <h5
-              class="card-title"
-              [ngStyle]="{
-                'background-color': movie.vote_average > 7 ? 'red' : 'yellow',
-                'font-family': 'fantasy',
-              }"
-            >
               {{ movie.title }}
-            </h5> -->
-            <p [ngClass]="movie.vote_average > 7 ? 'bg-info' : ''">
+            </h5>
+            <p>
               {{ movie.overview }}
             </p>
-            @if (movie.vote_average >= 7) {
-              <span class="badge rounded-pill bg-warning text-dark">Top Rated</span>
-            } @else {
-              <span class="badge rounded-pill bg-warning text-dark">
-                {{ movie.vote_average.toFixed(1) }}</span
-              >
-            }
+            <a class="btn btn-success" [routerLink]="['/movies', movie.id]">View Details</a>
           </div>
-          <h2>{{ movie.release_date | date: 'fullDate' }}</h2>
         </div>
       </div>
     } @empty {
@@ -36,29 +20,3 @@
     }
   </div>
 </div>
-
-<!-- old Version -->
-<!-- 
-<div class="container mt-4">
-  <div class="row row-cols-1 row-cols-md-3 g-4">
-    <div *ngFor="let movie of allMovies; index as i" class="col">
-      <div class="card">
-        <img [src]="baseImageURL + movie.poster_path" class="card-img-top" [alt]="movie.title" />
-        <div class="card-body">
-          <h5 class="card-title">{{ movie.title }}</h5>
-          <p class="card-text">
-            {{ movie.overview }}
-          </p>
-          <span *ngIf="movie.vote_average >= 7"
-             class="badge rounded-pill bg-warning text-dark"
-            >Top Rated</span
-          >
-        </div>
-      </div>
-    </div>
-  </div>
-</div> -->
-
-<!-- self study -->
-<!-- ng-template -->
-<!-- NgModel -->

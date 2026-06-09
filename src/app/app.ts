@@ -15,7 +15,7 @@ import { Parent } from '../components/parent/parent';
   selector: 'app-root',
   // standalone
   // External dependancey
-  imports: [Navbar, Footer, ProductList, Parent],
+  imports: [Navbar, Footer, RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })

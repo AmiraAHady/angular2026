@@ -1,12 +1,8 @@
 <div class="container mt-4">
+  <!-- <button class="btn btn-success" (click)="addProduct()">Add To Cart</button> -->
   <div class="row row-cols-1 row-cols-md-3 g-4">
     @for (singleProduct of allProducts; track $index) {
-      <app-product-card [product]="singleProduct"
-      (myEvent)="addProductTocart($event)"
-      ></app-product-card>
+      <app-product-card [product]="singleProduct"></app-product-card>
     }
-
-
-    
   </div>
 </div>
