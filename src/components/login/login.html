@@ -1,18 +1,48 @@
-
-
-<form>
-    <div class="mb-3">
-      <label for="exampleInputEmail1" class="form-label">Email address</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-      <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-    </div>
-    <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label">Password</label>
-      <input type="password" class="form-control" id="exampleInputPassword1">
-    </div>
-    <div class="mb-3 form-check">
-      <input type="checkbox" class="form-check-input" id="exampleCheck1">
-      <label class="form-check-label" for="exampleCheck1">Check me out</label>
-    </div>
-    <button type="submit" class="btn btn-primary" (click)="loginUser()">Login</button>
-  </form>
+<form #myForm="ngForm" (ngSubmit)="login(myForm)">
+  <!-- template-driven  -->
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Email address</label>
+    <input
+      type="email"
+      class="form-control"
+      id="exampleInputEmail1"
+      aria-describedby="emailHelp"
+      required
+      email
+      name="email"
+      ngModel
+      #emailRef="ngModel"
+    />
+    @if (emailRef.touched && emailRef.invalid) {
+      @if (emailRef.errors?.['required']) {
+        <p class="text-danger">Email is Required</p>
+      }
+      @if (emailRef.errors?.['email']) {
+        <p class="text-danger">Email is Invalid</p>
+      }
+    }
+    <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Password</label>
+    <input
+      type="password"
+      class="form-control"
+      id="exampleInputPassword1"
+      name="password"
+      minlength="8"
+      required
+      ngModel
+      #passRef="ngModel"
+    />
+  </div>
+  @if (passRef.touched && passRef.invalid) {
+    @if (passRef.errors?.['required']) {
+      <p class="text-danger">Password is Required</p>
+    }
+    @if (passRef.errors?.['minlength']) {
+      <p class="text-danger">Password at least 8 Chars</p>
+    }
+  }
+  <button type="submit" class="btn btn-primary" [disabled]="myForm.invalid">Login</button>
+</form>

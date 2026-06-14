@@ -1,0 +1,63 @@
+<form [formGroup]="studentForm" (ngSubmit)="register()">
+  <!-- Reactive Forms  -->
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Full Name</label>
+    <input
+      type="email"
+      class="form-control"
+      id="exampleInputEmail1"
+      aria-describedby="emailHelp"
+      name="email"
+      formControlName="fullName"
+    />
+
+    @if (fullName?.touched && fullName?.invalid) {
+      @if (fullName?.errors?.['required']) {
+        <p class="text-danger">fullName is Required</p>
+      }
+      @if (fullName?.errors?.['containNumbers']) {
+        <p class="text-danger">FullName can not contains numbers</p>
+      }
+    }
+
+    <label for="exampleInputEmail1" class="form-label">Email address</label>
+    <input
+      type="email"
+      class="form-control"
+      id="exampleInputEmail1"
+      aria-describedby="emailHelp"
+      name="email"
+      formControlName="email"
+    />
+    @if (email?.touched && email?.invalid) {
+      @if (email?.errors?.['required']) {
+        <p class="text-danger">Email is Required</p>
+      }
+      @if (email?.errors?.['email']) {
+        <p class="text-danger">Email is Invalid</p>
+      }
+    }
+
+    <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Password</label>
+    <input
+      type="password"
+      class="form-control"
+      id="exampleInputPassword1"
+      name="password"
+      formControlName="password"
+    />
+  </div>
+  @if (password?.touched && password?.invalid) {
+    @if (password?.errors?.['required']) {
+      <p class="text-danger">Password is Required</p>
+    }
+    @if (password?.errors?.['minlength']) {
+      <p class="text-danger">Password at least 8 Chars</p>
+    }
+  }
+
+  <button type="submit" class="btn btn-primary" [disabled]="studentForm.invalid">Register</button>
+</form>
