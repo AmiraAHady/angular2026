@@ -1,4 +1,7 @@
 <div class="container mt-4">
+  @if(loading()){
+    <h1>loading Movies....</h1>
+  }
   <div class="row row-cols-1 row-cols-md-3 g-4">
     @for (movie of allMovies; track movie.id) {
       <div class="col">
@@ -12,11 +15,21 @@
               {{ movie.overview }}
             </p>
             <a class="btn btn-success" [routerLink]="['/movies', movie.id]">View Details</a>
+            <section>
+             
+              <div class="example-button-row">
+                <button matButton="elevated">Basic</button>
+      
+              </div>
+            </section>
           </div>
         </div>
       </div>
-    } @empty {
-      <h1>No Movies Founded</h1>
     }
+     <!-- @empty {
+      <h1>No Movies Founded</h1>
+    } -->
   </div>
+
+  <!-- <h1>{{allMovies[0].title}}</h1> -->
 </div>

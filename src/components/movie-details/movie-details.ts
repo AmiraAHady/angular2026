@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { IMovie } from './../../common/interfaces/IMovie';
+import { Component, OnInit, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MoviesService } from '../../services/movies-service';
-import { IMovie } from '../../common/interfaces/IMovie';
+// import { IMovie } from '../../common/interfaces/IMovie';
 
 @Component({
   selector: 'app-movie-details',
@@ -10,9 +11,11 @@ import { IMovie } from '../../common/interfaces/IMovie';
   styleUrl: './movie-details.css',
 })
 export class MovieDetails implements OnInit {
-  movieId!: number;
-  movie!:IMovie |undefined
+  movieId!: string;
+  // movie = signal<IMovie>({} as IMovie);
+  movie!: IMovie;
   baseImageURL: string = 'https://image.tmdb.org/t/p/w500';
+  loading = signal(false);
   constructor(
     private route: ActivatedRoute,
     private moviesService: MoviesService,
@@ -20,9 +23,18 @@ export class MovieDetails implements OnInit {
 
   ngOnInit(): void {
     // route ==>angular service
-    this.movieId = parseInt(this.route.snapshot.paramMap.get('id')!);
+    this.movieId = this.route.snapshot.paramMap.get('id')!;
 
     // moviesService ==>by Me
-    this.movie=this.moviesService.getMovieById(this.movieId)
+    // this.moviesService.getMovieById(this.movieId).subscribe({
+    //   next: (res) => this.movie.set(res),
+    // });
+    this.loading.set(true)
+    this.moviesService.getMovieById(this.movieId).subscribe({
+      next: (res) => {
+        this.movie = res
+        this.loading.set(false)
+      },
+    });
   }
 }

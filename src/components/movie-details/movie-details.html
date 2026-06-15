@@ -1,27 +1,47 @@
 <div class="container mt-3">
+  @if(loading()){
+    <h1>loading Movies....</h1>
+  }
   <div class="row">
     <div class="col-4">
-      @if (movie) {
+      <div class="col">
+        <div class="card">
+          <img [src]="baseImageURL + movie.poster_path" class="card-img-top" [alt]="movie.title" />
+          <div class="card-body">
+            <h5 class="card-title">
+              {{ movie.title }}
+            </h5>
+            <p>
+              {{ movie.overview }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- with signals -->
+<!-- <div class="container mt-3">
+  <div class="row">
+    <div class="col-4">
         <div class="col">
           <div class="card">
             <img
-              [src]="baseImageURL + movie.poster_path"
+              [src]="baseImageURL + movie().poster_path"
               class="card-img-top"
-              [alt]="movie.title"
+              [alt]="movie().title"
             />
             <div class="card-body">
               <h5 class="card-title">
-                {{ movie.title }}
+                {{ movie().title }}
               </h5>
               <p>
-                {{ movie.overview }}
+                {{ movie().overview }}
               </p>
             </div>
           </div>
         </div>
-      } @else {
-        <h1>No Movie Founded with This Id!</h1>
-      }
+      
     </div>
   </div>
-</div>
+</div> -->
